@@ -29,7 +29,7 @@ Foreach-Object{
 
 function AmILastItemInLoop{
     If ($i -eq $numberFiles-1){ 
-        "There is not any other csv tp process, ending script now." 
+        "There is not any other csv to process, ending script now." 
         Exit #https://stackoverflow.com/questions/2022326/terminating-a-script-in-powershell
     }
     else {

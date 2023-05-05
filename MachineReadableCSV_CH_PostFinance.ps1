@@ -93,6 +93,7 @@ for($i=0; $i -lt $numberFiles;$i++){
             break
         }
     }
+    $lastLineTryAgain = $true
     $newline = "FirstLine"  
     $csvFile | Where-Object { $stopProcessing -Eq $False } | ForEach-Object { #https://stackoverflow.com/questions/10277994/how-to-exit-from-foreach-object-in-powershell
         $NonEmptyFields = @() 
@@ -111,6 +112,10 @@ for($i=0; $i -lt $numberFiles;$i++){
                 continue
             }
             0 {
+                if ($lastLineTryAgain) {
+                    $lastlineTryAgain = $false
+                    continue
+                }
                 AmILastItemInLoop
                 $stopProcessing = $true
                 continue 
